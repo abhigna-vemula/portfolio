@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Swathi Abhigna Vemula — AI/ML Engineer &amp; Software Developer</title>
 <meta name="description" content="Portfolio of Swathi Abhigna Vemula — Computer Science undergrad specializing in AI &amp; ML. Computer vision, NLP, and full-stack systems, from research to hackathon-tested hardware.">
+<link rel="icon" type="image/png" href="favicon.png">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -573,10 +574,11 @@ header.nav{
 .contact-link-row{
   display:flex; align-items:center; justify-content:space-between; padding:18px 0;
   border-top:1px solid var(--border); transition:padding-left .3s ease;
+  color:inherit; text-decoration:none;
 }
 .contact-link-row:last-child{ border-bottom:1px solid var(--border); }
-.contact-link-row:hover{ padding-left:8px; }
-.contact-link-row a{ display:flex; align-items:center; gap:14px; font-size:15.5px; font-weight:500; }
+.contact-link-row:hover{ padding-left:8px; color:var(--text); }
+.contact-link-row .c-link-content{ display:flex; align-items:center; gap:14px; font-size:15.5px; font-weight:500; }
 .contact-link-row .c-icon{ width:38px; height:38px; border-radius:50%; background:var(--bg-sunken); border:1px solid var(--border); display:flex; align-items:center; justify-content:center; color:var(--accent); }
 .contact-link-row .c-icon svg{ width:16px; height:16px; }
 .contact-link-row .arrow{ color:var(--text-faint); transition:transform .3s ease; }
@@ -858,6 +860,215 @@ footer{ border-top:1px solid var(--border); padding-block:36px; }
 .animate-fade-in-up {
   animation: fadeInUpCustom 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   opacity: 0;
+}
+
+/* ============================================================
+   CONTACT MODAL STYLES
+   ============================================================ */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(11, 14, 17, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  z-index: 2500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  padding: 20px;
+}
+.modal-overlay.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+.modal-card {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-l);
+  width: 100%;
+  max-width: 480px;
+  padding: 32px;
+  box-shadow: var(--shadow-lg);
+  position: relative;
+  transform: translateY(20px) scale(0.96);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.modal-overlay.open .modal-card {
+  transform: translateY(0) scale(1);
+}
+.modal-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  background: var(--bg-sunken);
+  border: 1px solid var(--border);
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+.modal-close:hover {
+  background: var(--border);
+  color: var(--text);
+}
+.modal-close svg {
+  width: 16px;
+  height: 16px;
+}
+.modal-header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+.modal-success-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--accent-soft);
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px;
+}
+.modal-success-icon svg {
+  width: 26px;
+  height: 26px;
+}
+.modal-header h3 {
+  font-size: 22px;
+  margin-bottom: 8px;
+  font-family: var(--font-display);
+}
+.modal-header p {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+.status-box {
+  background: var(--accent-soft);
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  padding: 12px 16px;
+  border-radius: var(--radius-s);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13.5px;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+.status-box svg {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+.modal-options {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+.modal-opt-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 18px;
+  background: var(--bg-sunken);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-m);
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  text-decoration: none;
+  color: inherit;
+}
+.modal-opt-btn:hover {
+  border-color: var(--border-strong);
+  background: var(--bg-elevated);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+}
+.opt-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.opt-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.gmail-color {
+  background: rgba(234, 67, 53, 0.1);
+  color: #EA4335;
+}
+.outlook-color {
+  background: rgba(0, 120, 215, 0.1);
+  color: #0078D7;
+}
+.default-color {
+  background: var(--accent-warm-soft);
+  color: var(--accent-warm);
+}
+.opt-details {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+.opt-details strong {
+  font-size: 14.5px;
+  font-weight: 600;
+}
+.opt-details span {
+  font-size: 12px;
+  color: var(--text-faint);
+}
+.opt-arrow {
+  width: 16px;
+  height: 16px;
+  color: var(--text-faint);
+  transition: transform 0.2s ease;
+}
+.modal-opt-btn:hover .opt-arrow {
+  transform: translateX(3px);
+  color: var(--text);
+}
+.manual-box {
+  border-top: 1px solid var(--border);
+  padding-top: 20px;
+}
+.manual-label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: var(--text-faint);
+  margin-bottom: 8px;
+  text-align: left;
+}
+.manual-input-group {
+  display: flex;
+  gap: 8px;
+}
+.manual-input-group input {
+  flex: 1;
+  background: var(--bg-sunken);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-s);
+  padding: 8px 12px;
+  font-size: 13.5px;
+  color: var(--text);
 }
 </style>
 </head>
@@ -1527,22 +1738,22 @@ footer{ border-top:1px solid var(--border); padding-block:36px; }
         <p style="color:var(--text-muted); margin-top:16px; max-width:48ch;">I reply fastest by email. Happy to walk through any project in more depth, or send over source code.</p>
 
         <div class="contact-links">
-          <div class="contact-link-row">
-            <a href="mailto:abhigna2005@gmail.com"><span class="c-icon"><svg data-lucide="mail"></svg></span> abhigna2005@gmail.com</a>
+          <a href="mailto:abhigna2005@gmail.com" class="contact-link-row">
+            <span class="c-link-content"><span class="c-icon"><svg data-lucide="mail"></svg></span> abhigna2005@gmail.com</span>
             <span class="arrow"><svg data-lucide="arrow-up-right" style="width:16px;height:16px"></svg></span>
-          </div>
-          <div class="contact-link-row">
-            <a href="https://www.linkedin.com/in/abhigna-vemula-086428291/" target="_blank" rel="noopener"><span class="c-icon"><svg data-lucide="linkedin"></svg></span> linkedin.com/in/abhigna-vemula</a>
+          </a>
+          <a href="https://www.linkedin.com/in/abhigna-vemula-086428291/" target="_blank" rel="noopener" class="contact-link-row">
+            <span class="c-link-content"><span class="c-icon"><svg data-lucide="linkedin"></svg></span> linkedin.com/in/abhigna-vemula</span>
             <span class="arrow"><svg data-lucide="arrow-up-right" style="width:16px;height:16px"></svg></span>
-          </div>
-          <div class="contact-link-row">
-            <a href="https://github.com/abhigna-vemula" target="_blank" rel="noopener"><span class="c-icon"><svg data-lucide="github"></svg></span> github.com/abhigna-vemula</a>
+          </a>
+          <a href="https://github.com/abhigna-vemula" target="_blank" rel="noopener" class="contact-link-row">
+            <span class="c-link-content"><span class="c-icon"><svg data-lucide="github"></svg></span> github.com/abhigna-vemula</span>
             <span class="arrow"><svg data-lucide="arrow-up-right" style="width:16px;height:16px"></svg></span>
-          </div>
-          <div class="contact-link-row">
-            <a href="Swathi_Abhigna_Vemula_Resume.pdf" download><span class="c-icon"><svg data-lucide="file-text"></svg></span> Download Resume (PDF)</a>
+          </a>
+          <a href="Swathi_Abhigna_Vemula_Resume.pdf" download class="contact-link-row">
+            <span class="c-link-content"><span class="c-icon"><svg data-lucide="file-text"></svg></span> Download Resume (PDF)</span>
             <span class="arrow"><svg data-lucide="arrow-up-right" style="width:16px;height:16px"></svg></span>
-          </div>
+          </a>
         </div>
       </div>
 
@@ -1577,6 +1788,75 @@ footer{ border-top:1px solid var(--border); padding-block:36px; }
     </div>
   </div>
 </footer>
+
+<!-- Contact Success Modal -->
+<div id="contact-modal" class="modal-overlay" aria-hidden="true">
+  <div class="modal-card">
+    <button class="modal-close" id="modal-close-btn" aria-label="Close modal">
+      <svg data-lucide="x"></svg>
+    </button>
+    <div class="modal-header">
+      <div class="modal-success-icon">
+        <svg data-lucide="mail-check"></svg>
+      </div>
+      <h3>Choose how to send</h3>
+      <p>Select your preferred way to send your message to Swathi.</p>
+    </div>
+    
+    <div class="modal-body">
+      <!-- Status Box -->
+      <div class="status-box">
+        <svg data-lucide="clipboard-check"></svg>
+        <span>Message details copied to clipboard!</span>
+      </div>
+      
+      <!-- Option list -->
+      <div class="modal-options">
+        <a id="modal-opt-gmail" target="_blank" rel="noopener" class="modal-opt-btn">
+          <span class="opt-left">
+            <span class="opt-icon gmail-color"><svg data-lucide="chrome"></svg></span>
+            <span class="opt-details">
+              <strong>Gmail Web</strong>
+              <span>Open in a new tab</span>
+            </span>
+          </span>
+          <svg data-lucide="chevron-right" class="opt-arrow"></svg>
+        </a>
+
+        <a id="modal-opt-outlook" target="_blank" rel="noopener" class="modal-opt-btn">
+          <span class="opt-left">
+            <span class="opt-icon outlook-color"><svg data-lucide="mail-open"></svg></span>
+            <span class="opt-details">
+              <strong>Outlook Web</strong>
+              <span>Open in a new tab</span>
+            </span>
+          </span>
+          <svg data-lucide="chevron-right" class="opt-arrow"></svg>
+        </a>
+        
+        <a id="modal-opt-mailto" class="modal-opt-btn">
+          <span class="opt-left">
+            <span class="opt-icon default-color"><svg data-lucide="external-link"></svg></span>
+            <span class="opt-details">
+              <strong>Default Mail App</strong>
+              <span>Launch your device app</span>
+            </span>
+          </span>
+          <svg data-lucide="chevron-right" class="opt-arrow"></svg>
+        </a>
+      </div>
+      
+      <!-- Manual Copy Box -->
+      <div class="manual-box">
+        <span class="manual-label">Recipient Email</span>
+        <div class="manual-input-group">
+          <input type="text" readonly value="abhigna2005@gmail.com" id="modal-email-val">
+          <button type="button" id="modal-copy-email-btn" class="btn btn-secondary btn-sm">Copy</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <button id="back-to-top" aria-label="Back to top"><svg data-lucide="arrow-up"></svg></button>
 <div class="toast" id="toast">Copied to clipboard</div>
@@ -1688,15 +1968,123 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  /* ---------- CONTACT FORM (mailto) ---------- */
-  document.getElementById('contact-form').addEventListener('submit', (e) => {
-    e.preventDefault();
-    const name = document.getElementById('f-name').value;
-    const email = document.getElementById('f-email').value;
-    const message = document.getElementById('f-message').value;
-    const subject = encodeURIComponent(`Portfolio contact from ${name}`);
-    const body = encodeURIComponent(`${message}\n\n— ${name} (${email})`);
-    window.location.href = `mailto:abhigna2005@gmail.com?subject=${subject}&body=${body}`;
+  /* ---------- CLIPBOARD HELPER WITH FALLBACK ---------- */
+  const copyTextToClipboard = (text) => {
+    return new Promise((resolve, reject) => {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(resolve).catch(reject);
+        return;
+      }
+      
+      // Fallback method
+      try {
+        const textArea = document.createElement("textarea");
+        textArea.value = text;
+        textArea.style.top = "0";
+        textArea.style.left = "0";
+        textArea.style.position = "fixed";
+        textArea.style.opacity = "0";
+        document.body.appendChild(textArea);
+        textArea.focus();
+        textArea.select();
+        const successful = document.execCommand('copy');
+        document.body.removeChild(textArea);
+        if (successful) {
+          resolve();
+        } else {
+          reject(new Error("Fallback copy command failed"));
+        }
+      } catch (err) {
+        reject(err);
+      }
+    });
+  };
+
+  /* ---------- CONTACT FORM MODAL HANDLER ---------- */
+  const contactModal = document.getElementById('contact-modal');
+  const modalCloseBtn = document.getElementById('modal-close-btn');
+  const modalCopyEmailBtn = document.getElementById('modal-copy-email-btn');
+
+  const openContactModal = (name, email, message) => {
+    const subject = `Portfolio contact from ${name}`;
+    const mailBody = `${message}\n\n— ${name} (${email})`;
+    
+    // Set dynamic links
+    const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=abhigna2005@gmail.com&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(mailBody)}`;
+    const outlookUrl = `https://outlook.live.com/default.aspx?rru=compose&to=abhigna2005@gmail.com&subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(mailBody)}`;
+    const mailtoUrl = `mailto:abhigna2005@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(mailBody)}`;
+    
+    document.getElementById('modal-opt-gmail').href = gmailUrl;
+    document.getElementById('modal-opt-outlook').href = outlookUrl;
+    document.getElementById('modal-opt-mailto').href = mailtoUrl;
+    
+    // Copy content to clipboard
+    const clipboardText = `To: abhigna2005@gmail.com\nSubject: ${subject}\n\nBody:\n${mailBody}`;
+    copyTextToClipboard(clipboardText).catch(err => console.error("Clipboard copy failed:", err));
+    
+    // Show modal
+    if (contactModal) {
+      contactModal.classList.add('open');
+      contactModal.setAttribute('aria-hidden', 'false');
+    }
+  };
+
+  const closeContactModal = () => {
+    if (contactModal) {
+      contactModal.classList.remove('open');
+      contactModal.setAttribute('aria-hidden', 'true');
+    }
+  };
+
+  if (modalCloseBtn) {
+    modalCloseBtn.addEventListener('click', closeContactModal);
+  }
+  
+  // Close on clicking backdrop
+  if (contactModal) {
+    contactModal.addEventListener('click', (e) => {
+      if (e.target === contactModal) {
+        closeContactModal();
+      }
+    });
+  }
+
+  if (modalCopyEmailBtn) {
+    modalCopyEmailBtn.addEventListener('click', () => {
+      copyTextToClipboard("abhigna2005@gmail.com").then(() => {
+        modalCopyEmailBtn.textContent = "Copied!";
+        setTimeout(() => {
+          modalCopyEmailBtn.textContent = "Copy";
+        }, 2000);
+      });
+    });
+  }
+
+  /* ---------- CONTACT FORM SUBMIT ---------- */
+  const contactForm = document.getElementById('contact-form');
+  if (contactForm) {
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('f-name').value;
+      const email = document.getElementById('f-email').value;
+      const message = document.getElementById('f-message').value;
+      
+      openContactModal(name, email, message);
+    });
+  }
+
+  // Copy email to clipboard simultaneously on click for all mailto links
+  document.querySelectorAll('a[href^="mailto:"]').forEach(link => {
+    link.addEventListener('click', () => {
+      copyTextToClipboard("abhigna2005@gmail.com").then(() => {
+        const toast = document.getElementById('toast');
+        if (toast) {
+          toast.textContent = "Email copied! (In case mail client does not launch)";
+          toast.classList.add('show');
+          setTimeout(() => toast.classList.remove('show'), 3500);
+        }
+      }).catch(err => console.error("Clipboard copy failed: ", err));
+    });
   });
 
   /* ---------- FOOTER YEAR ---------- */
